@@ -1,7 +1,21 @@
-import QuillEditor from "@/component/Ui/postPageEditor";
+// const CreatePostPage = () => {
+//   return <QuillEditor />;
+// };
+"use client";
 
-const CreatePostPage = () => {
-  return <QuillEditor />;
+import PostModal from "@/component/Ui/modals/postModal";
+import { Button } from "@nextui-org/react";
+
+// export default CreatePostPage;
+
+const Page = () => {
+  return (
+    <div>
+      <h1>this is post</h1>
+      <Button>
+        <PostModal />
+      </Button>
+    </div>
+  );
 };
-
-export default CreatePostPage;
+export default Page;

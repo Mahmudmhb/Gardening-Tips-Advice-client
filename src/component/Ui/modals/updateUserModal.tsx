@@ -17,7 +17,7 @@ import {
 import { FaEdit } from "react-icons/fa";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IUser } from "@/types/types";
-import { useUpdateUserMutation } from "@/redux/app/featurs/user/userApi";
+import { useUpdateUserMutation } from "@/redux/app/featurs/api/user/userApi";
 import { toast } from "sonner";
 
 export default function UpdateModal() {
