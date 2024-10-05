@@ -12,3 +12,14 @@ export interface IUser {
   address?: string;
   role: role;
 }
+
+export type TPost = {
+  _id: string;
+  text: string;
+  image?: string;
+  user: string;
+  upvotesCount?: number;
+  upvotedUsers?: string;
+  category: string;
+  premium: boolean;
+};

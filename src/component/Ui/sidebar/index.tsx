@@ -17,7 +17,7 @@ const Sidebar = () => {
         <Image
           alt="cover"
           className="w-full h-full object-cover"
-          src="/path/to/cover-photo.jpg" // Replace with actual cover photo path
+          src={user?.profilePicture as string} // Replace with actual cover photo path
           layout="fill"
         />
       </div>
