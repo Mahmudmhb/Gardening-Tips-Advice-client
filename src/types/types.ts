@@ -17,7 +17,7 @@ export type TPost = {
   _id: string;
   text: string;
   image?: string;
-  user: string;
+  user: IUser;
   upvotesCount?: number;
   upvotedUsers?: string;
   category: string;

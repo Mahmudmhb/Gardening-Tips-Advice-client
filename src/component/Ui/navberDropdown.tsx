@@ -22,12 +22,12 @@ const NavbarDropdown = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(useCurrnetUser);
 
-  // if (protectedRoutes.some((route) => pathname.match(route))) {
-  //   router.push("/");
-  // }
+  if (protectedRoutes.some((route) => pathname.match(route))) {
+    router.push("/");
+  }
 
   const handleNavigation = (pathname: string) => {
-    // router.push(pathname);
+    router.push(pathname);
     console.log(pathname);
   };
   const handleLogout = () => {

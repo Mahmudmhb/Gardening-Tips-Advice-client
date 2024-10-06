@@ -11,6 +11,7 @@ export default function layout({ children }: { children: ReactNode }) {
         <div className="">
           {/* <Sidebar />
            */}
+
           <ProfileLayout />
         </div>
         <div className="w-4/5">{children}</div>

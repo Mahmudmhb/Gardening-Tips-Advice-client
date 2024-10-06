@@ -5,6 +5,7 @@ import {
   ModalBody,
   Button,
   useDisclosure,
+  Input,
 } from "@nextui-org/react";
 import QuillEditor from "../postPageEditor";
 
@@ -13,8 +14,8 @@ export default function PostModal() {
 
   return (
     <>
-      <Button onPress={onOpen} className="uppercase">
-        create post
+      <Button onPress={onOpen} className="uppercase w-full">
+        <Input isReadOnly defaultValue="Whats on your mind? p-0" />
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent className="h-96">

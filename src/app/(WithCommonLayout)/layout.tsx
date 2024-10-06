@@ -1,4 +1,4 @@
-import { Navbar } from "@/component/Ui/navber";
+import { Navbar } from "@nextui-org/react";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
