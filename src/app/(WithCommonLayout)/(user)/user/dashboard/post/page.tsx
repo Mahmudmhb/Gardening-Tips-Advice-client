@@ -11,7 +11,6 @@ import { Button } from "@nextui-org/react";
 const Page = () => {
   return (
     <div>
-      <h1>this is post</h1>
       <Button>
         <PostModal />
       </Button>

@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Modal,
   ModalContent,
@@ -8,21 +9,24 @@ import {
   Input,
 } from "@nextui-org/react";
 import QuillEditor from "../postPageEditor";
+import { TfiWrite } from "react-icons/tfi";
 
 export default function PostModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>
-      <Button onPress={onOpen} className="uppercase w-full">
-        <Input isReadOnly defaultValue="Whats on your mind? p-0" />
+      <Button onPress={onOpen} className="uppercase w-full p-0">
+        <TfiWrite className="text-3xl ml-3" />
+        <Input isReadOnly defaultValue="What's on your mind?" />
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
-        <ModalContent className="h-96">
+        <ModalContent>
           {() => (
             <>
               <ModalBody>
-                <QuillEditor />
+                {/* Pass the onCloseModal prop to close the modal */}
+                <QuillEditor onCloseModal={() => onOpenChange()} />
               </ModalBody>
             </>
           )}

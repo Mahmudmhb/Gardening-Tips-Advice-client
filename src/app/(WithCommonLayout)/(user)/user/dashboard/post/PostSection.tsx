@@ -6,20 +6,20 @@ import { FaEdit } from "react-icons/fa";
 
 const PostSection = ({ item }: { item: TPost }) => {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
+    <div className="bg-slate-200 text-[#000810] p-4 rounded-lg shadow-md">
       {/* User Info */}
       <div className="flex justify-between items-center space-x-4 mb-4">
         <div>
           <div className="w-12 h-12 relative">
             <Image
-              src={item.image!}
-              alt={item.user.username}
+              src={item.image! || "/default-image.jpg"}
+              alt={item?.user?.username}
               layout="fill"
               className="rounded-full object-cover"
             />
           </div>
           <div>
-            <p className="font-semibold">{item.user?.username as string}</p>
+            <p className="font-semibold">{item?.user?.username as string}</p>
             <p className="text-sm text-gray-500">2 hours ago</p>
           </div>
         </div>

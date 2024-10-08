@@ -23,11 +23,11 @@ const NavbarDropdown = () => {
   const user = useAppSelector(useCurrnetUser);
 
   if (protectedRoutes.some((route) => pathname.match(route))) {
-    router.push("/");
+    // router.push("/");
   }
 
   const handleNavigation = (pathname: string) => {
-    router.push(pathname);
+    // router.push(pathname);
     console.log(pathname);
   };
   const handleLogout = () => {
@@ -35,27 +35,40 @@ const NavbarDropdown = () => {
   };
 
   return (
-    <Dropdown>
+    <Dropdown placement="bottom-end" className="bg-black">
       <DropdownTrigger>
-        <Avatar className="cursor-pointer" src={user?.profilePicture} />
+        <Avatar
+          isBordered
+          as="button"
+          className="transition-transform"
+          color="secondary"
+          name="Jason Hughes"
+          size="sm"
+          src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+        />
       </DropdownTrigger>
-      <DropdownMenu aria-label="Static Actions">
-        <DropdownItem onClick={() => handleNavigation("/profile")}>
-          Profile
-        </DropdownItem>
-        <DropdownItem onClick={() => handleNavigation("/profile/settings")}>
-          Settings
-        </DropdownItem>
-        <DropdownItem onClick={() => handleNavigation("/profile/create-post")}>
-          Create Post
+      <DropdownMenu aria-label="Profile Actions" variant="flat">
+        <DropdownItem key="profile" className="h-14 gap-2">
+          <p className="font-semibold">Signed in as</p>
+          <p className="font-semibold">{user?.email}</p>
         </DropdownItem>
         <DropdownItem
-          key="delete"
-          className="text-danger"
+          key="settings"
+          onClick={() => handleNavigation("/user/dashboard")}
+        >
+          My Profile
+        </DropdownItem>
+        <DropdownItem key="team_settings">Team Settings</DropdownItem>
+        <DropdownItem key="analytics">Analytics</DropdownItem>
+        <DropdownItem key="system">System</DropdownItem>
+
+        <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+        <DropdownItem
+          key="logout"
           color="danger"
           onClick={() => handleLogout()}
         >
-          Logout
+          Log Out
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

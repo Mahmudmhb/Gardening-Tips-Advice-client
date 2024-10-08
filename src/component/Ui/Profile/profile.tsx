@@ -21,7 +21,7 @@ const ProfileLayout = () => {
           />
         </div>
         <div>
-          <h1 className="text-3xl font-bold">User Name</h1>
+          <h1 className="text-3xl font-bold uppercase">{user?.username}</h1>
           <p className="text-gray-600">
             100 Posts • 500 Followers • 300 Following
           </p>

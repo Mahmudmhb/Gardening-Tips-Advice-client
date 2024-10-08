@@ -18,7 +18,7 @@ export function Providers({ children }: ProvidersProps) {
 
   return (
     <NextUIProvider navigate={router.push}>
-      <Toaster />
+      <Toaster position="top-center" />
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>{children}</Provider>
       </PersistGate>

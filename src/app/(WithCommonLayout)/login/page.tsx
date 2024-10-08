@@ -21,8 +21,8 @@ const Login = () => {
     formState: { errors },
   } = useForm<IUser>({
     defaultValues: {
-      email: "bijoy01627@gmail.com",
-      password: "'zxcvbnm",
+      email: "a@gmail.com",
+      password: "zxcvbnm",
     },
   });
 
@@ -35,7 +35,7 @@ const Login = () => {
       const userData = res?.data.user;
       const token = res?.data.token;
       dispatch(signUser({ userData, token }));
-      router.push(`/`);
+      // router.push(`/`);
     } catch (error) {
       toast.error("Something went wrong", { id: toastId, duration: 1000 });
     }

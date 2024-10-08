@@ -59,7 +59,7 @@ export default function UpdateModal() {
         <FaEdit />
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
-        <ModalContent>
+        <ModalContent className="text-[#000810]">
           {(onClose) => (
             <form onSubmit={handleSubmit(onSubmit)}>
               <ModalHeader className="flex flex-col gap-1">
