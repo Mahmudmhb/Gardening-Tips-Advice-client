@@ -15,7 +15,7 @@ import { toast } from "sonner";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface QuillEditorProps {
-  onCloseModal: () => void; // Function to close the modal
+  onCloseModal: () => void;
 }
 
 const QuillEditor: React.FC<QuillEditorProps> = ({ onCloseModal }) => {

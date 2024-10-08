@@ -1,10 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import { TPost } from "@/types/types";
+import { TCommnets, TPost } from "@/types/types";
 import HtmlContent from "@/component/Ui/Html/htmlContent";
 import { FaEdit } from "react-icons/fa";
+import CommentModal from "@/component/Ui/modals/commentModal";
+import CommentPage from "@/component/Ui/comment/comment";
 
 const PostSection = ({ item }: { item: TPost }) => {
+  console.log(item.comments);
   return (
     <div className="bg-slate-200 text-[#000810] p-4 rounded-lg shadow-md">
       {/* User Info */}
@@ -65,7 +68,6 @@ const PostSection = ({ item }: { item: TPost }) => {
           <span>{item.upvotesCount} upvote</span>
         </button>
 
-        {/* Comments Button */}
         <button className="flex items-center space-x-2 hover:text-blue-500">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +83,9 @@ const PostSection = ({ item }: { item: TPost }) => {
               d="M8 10h.01M12 10h.01M16 10h.01M9 16h6m-3-6v6m0 6a9 9 0 110-18 9 9 0 010 18z"
             />
           </svg>
-          <span> Comments</span>
+          <CommentModal item={item} />
         </button>
 
-        {/* Share Button */}
         <button className="flex items-center space-x-2 hover:text-blue-500">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -102,6 +103,15 @@ const PostSection = ({ item }: { item: TPost }) => {
           </svg>
           <span> Shares</span>
         </button>
+      </div>
+      <div className="my-5">
+        {item.comments.length > 0 && (
+          <>
+            {item.comments.map((com: TCommnets) => (
+              <CommentPage com={com} key={com._id} />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

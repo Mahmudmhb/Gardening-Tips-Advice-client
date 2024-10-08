@@ -21,7 +21,7 @@ const ProfilePage = () => {
   return (
     <div className="w-5/6 mx-auto">
       <div className="md:grid grid-cols-7 justify-evenly">
-        <div className="col-span-3  space-y-5">
+        <div className="col-span-3  space-y-5 sticky top-0">
           <div>
             <h1>Intro</h1>
           </div>
@@ -63,12 +63,10 @@ const ProfilePage = () => {
                     <CardBody className="overflow-visible p-0">
                       {item.image && (
                         <Image
-                          shadow={"sm"}
-                          radius="lg"
                           height={100}
                           width={100}
                           alt={item.text}
-                          className="w-full object-cover h-[140px]"
+                          className="w-full object-cover h-[140px] rounded-lg"
                           src={item.image! || "/default-image.jpg"}
                         />
                       )}

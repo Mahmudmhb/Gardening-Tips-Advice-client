@@ -25,7 +25,22 @@ export const postApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["posts"],
     }),
+    createComment: builder.mutation({
+      query: ({ postID, commentText }) => {
+        console.log(postID, commentText);
+        return {
+          url: `/post/comments/${postID}`,
+          method: "POST",
+          body: { commentText },
+        };
+      },
+      invalidatesTags: ["posts"],
+    }),
   }),
 });
-export const { useCreatePostMutation, useGetAllPostQuery, useGetMyPostQuery } =
-  postApi;
+export const {
+  useCreatePostMutation,
+  useGetAllPostQuery,
+  useGetMyPostQuery,
+  useCreateCommentMutation,
+} = postApi;

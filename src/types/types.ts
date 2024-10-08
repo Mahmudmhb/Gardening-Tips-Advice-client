@@ -22,4 +22,10 @@ export type TPost = {
   upvotedUsers?: string;
   category: string;
   premium: boolean;
+  comments: [];
+};
+export type TCommnets = {
+  _id?: string;
+  user: IUser;
+  comment: string;
 };
