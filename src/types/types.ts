@@ -29,3 +29,7 @@ export type TCommnets = {
   user: IUser;
   comment: string;
 };
+export type TProps = {
+  com: TCommnets;
+  item: TPost;
+};

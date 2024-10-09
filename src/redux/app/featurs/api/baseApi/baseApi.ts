@@ -36,7 +36,7 @@ const BaseQueryWithToken: BaseQueryFn<
       } else if (result.error.status === 404) {
         toast.error("Resource not found.");
       } else {
-        toast.error("An error occurred.");
+        // toast.error("An error occurred.");
       }
     }
 

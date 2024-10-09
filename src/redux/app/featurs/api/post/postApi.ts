@@ -36,6 +36,38 @@ export const postApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["posts"],
     }),
+    updateComment: builder.mutation({
+      query: ({ postID, commentId, commentText }) => {
+        console.log(postID, commentId, commentText);
+        return {
+          url: `/post/update-commnets/${postID}`,
+          method: "PATCH",
+          body: { commentId, commentText },
+        };
+      },
+      invalidatesTags: ["posts"],
+    }),
+    updatePostInDb: builder.mutation({
+      query: ({ postID, postData }) => {
+        console.log(postID, postData);
+        return {
+          url: `/post/update/${postID}`,
+          method: "PATCH",
+          body: postData,
+        };
+      },
+      invalidatesTags: ["posts"],
+    }),
+    deletePostFromDb: builder.mutation({
+      query: ({ postId }) => {
+        console.log("Received postId:", postId); // Check if postId is coming correctly here
+        return {
+          url: `/post/delete/${postId}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["posts"],
+    }),
   }),
 });
 export const {
@@ -43,4 +75,7 @@ export const {
   useGetAllPostQuery,
   useGetMyPostQuery,
   useCreateCommentMutation,
+  useUpdatePostInDbMutation,
+  useDeletePostFromDbMutation,
+  useUpdateCommentMutation,
 } = postApi;

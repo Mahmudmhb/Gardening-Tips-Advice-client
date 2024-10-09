@@ -4,6 +4,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import { baseApi } from "./featurs/api/baseApi/baseApi";
 import loginReducer from "./featurs/api/auth/authSlice";
+import postReducer from "./featurs/api/post/postSlice";
 
 // ...
 const persistConfig = {
@@ -17,6 +18,7 @@ export const store = configureStore({
     // Add the generated reducer as a specific top-level slice
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistAuthReducer,
+    posts: postReducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.

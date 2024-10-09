@@ -38,7 +38,7 @@ const Register = () => {
         // toast.error("Something went wrong", { id: toastId, duration: 1000 });
         toast.error(error.data.message, {
           id: toastId,
-          duration: 1000,
+          duration: 2000,
         });
         return;
       }

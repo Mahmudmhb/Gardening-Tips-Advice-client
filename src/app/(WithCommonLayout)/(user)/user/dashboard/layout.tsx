@@ -13,7 +13,7 @@ export default function layout({ children }: { children: ReactNode }) {
            */}
           <ProfileLayout />
         </div>
-        <div className="w-4/5">{children}</div>
+        <div className="w-full">{children}</div>
       </div>
     </Container>
   );

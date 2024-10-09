@@ -1,8 +1,8 @@
-import { TCommnets } from "@/types/types";
+import { TProps } from "@/types/types";
 import Image from "next/image";
-import { FaEdit } from "react-icons/fa";
+import UpdateCommentModal from "../modals/updateCommentModal";
 
-const CommentPage = ({ com }: { com: TCommnets }) => {
+const CommentPage = ({ com, item }: TProps) => {
   return (
     <div>
       <div className="bg-white p-4 max-w-2xl mx-auto rounded-lg shadow-md">
@@ -24,7 +24,7 @@ const CommentPage = ({ com }: { com: TCommnets }) => {
                 </div>
                 <div className="relative">
                   <button className="text-gray-500 hover:text-gray-800">
-                    <FaEdit />
+                    <UpdateCommentModal item={item} com={com} />
                   </button>
                 </div>
               </div>

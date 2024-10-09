@@ -2,12 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { TCommnets, TPost } from "@/types/types";
 import HtmlContent from "@/component/Ui/Html/htmlContent";
-import { FaEdit } from "react-icons/fa";
 import CommentModal from "@/component/Ui/modals/commentModal";
 import CommentPage from "@/component/Ui/comment/comment";
+import EditAndDeleteApp from "@/component/dropdown/editAndDeleteDropdown";
 
 const PostSection = ({ item }: { item: TPost }) => {
-  console.log(item.comments);
   return (
     <div className="bg-slate-200 text-[#000810] p-4 rounded-lg shadow-md">
       {/* User Info */}
@@ -15,7 +14,7 @@ const PostSection = ({ item }: { item: TPost }) => {
         <div>
           <div className="w-12 h-12 relative">
             <Image
-              src={item.image! || "/default-image.jpg"}
+              src={item.user.profilePicture! || "/default-image.jpg"}
               alt={item?.user?.username}
               layout="fill"
               className="rounded-full object-cover"
@@ -26,9 +25,9 @@ const PostSection = ({ item }: { item: TPost }) => {
             <p className="text-sm text-gray-500">2 hours ago</p>
           </div>
         </div>
-        <div>
-          <FaEdit />
-        </div>
+        <button>
+          <EditAndDeleteApp item={item} />
+        </button>
       </div>
 
       {/* Post Content */}
@@ -108,7 +107,7 @@ const PostSection = ({ item }: { item: TPost }) => {
         {item.comments.length > 0 && (
           <>
             {item.comments.map((com: TCommnets) => (
-              <CommentPage com={com} key={com._id} />
+              <CommentPage com={com} item={item} key={com._id} />
             ))}
           </>
         )}
