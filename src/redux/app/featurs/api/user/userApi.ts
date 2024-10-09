@@ -27,10 +27,20 @@ export const userApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["users"],
     }),
+    paymentOfVerify: builder.mutation({
+      query: ({ payment }) => {
+        return {
+          url: "user/payment",
+          method: "POST",
+          body: payment,
+        };
+      },
+    }),
   }),
 });
 export const {
   useUpdateUserMutation,
   useGetAllUserQuery,
   useGetSingleUserQuery,
+  usePaymentOfVerifyMutation,
 } = userApi;

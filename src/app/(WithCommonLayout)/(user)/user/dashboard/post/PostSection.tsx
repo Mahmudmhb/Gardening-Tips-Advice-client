@@ -1,12 +1,33 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from "react";
 import Image from "next/image";
 import { TCommnets, TPost } from "@/types/types";
 import HtmlContent from "@/component/Ui/Html/htmlContent";
 import CommentModal from "@/component/Ui/modals/commentModal";
 import CommentPage from "@/component/Ui/comment/comment";
 import EditAndDeleteApp from "@/component/dropdown/editAndDeleteDropdown";
+import { useUpvotePostMutation } from "@/redux/app/featurs/api/post/postApi";
+import { toast } from "sonner";
+import { Button } from "@nextui-org/react";
 
 const PostSection = ({ item }: { item: TPost }) => {
+  const [upvoteUpdate] = useUpvotePostMutation();
+
+  const [visibleComments, setVisibleComments] = useState(2);
+  const handleLoadMore = () => {
+    setVisibleComments(item.comments.length);
+  };
+  const handleUpvote = async (postId: string) => {
+    console.log("postId", postId);
+
+    try {
+      const res = await upvoteUpdate({ postId }).unwrap();
+
+      toast.success(`${res.message}`, { duration: 1000 });
+    } catch (error: any) {
+      toast.error(error.data.message, { duration: 1000 });
+    }
+  };
   return (
     <div className="bg-slate-200 text-[#000810] p-4 rounded-lg shadow-md">
       {/* User Info */}
@@ -30,7 +51,6 @@ const PostSection = ({ item }: { item: TPost }) => {
         </button>
       </div>
 
-      {/* Post Content */}
       <p className="mb-4 text-gray-800">
         <HtmlContent content={item.text} />
       </p>
@@ -46,25 +66,12 @@ const PostSection = ({ item }: { item: TPost }) => {
         </div>
       )}
 
-      {/* Engagement Section */}
       <div className="flex items-center justify-between text-gray-500">
-        {/* Likes Button */}
         <button className="flex items-center space-x-2 hover:text-blue-500">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 9l6 6-6 6M10 9H4v12h6l10-10-6-6"
-            />
-          </svg>
-          <span>{item.upvotesCount} upvote</span>
+          <div>
+            {item.upvotesCount}{" "}
+            <button onClick={() => handleUpvote(item._id)}> upvote</button>
+          </div>
         </button>
 
         <button className="flex items-center space-x-2 hover:text-blue-500">
@@ -106,9 +113,13 @@ const PostSection = ({ item }: { item: TPost }) => {
       <div className="my-5">
         {item.comments.length > 0 && (
           <>
-            {item.comments.map((com: TCommnets) => (
+            {item.comments.slice(0, visibleComments).map((com: TCommnets) => (
               <CommentPage com={com} item={item} key={com._id} />
             ))}
+
+            {visibleComments < item.comments.length && (
+              <Button onClick={handleLoadMore}>Load More Comments</Button>
+            )}
           </>
         )}
       </div>

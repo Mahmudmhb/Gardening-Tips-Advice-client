@@ -1,14 +1,9 @@
-// const CreatePostPage = () => {
-//   return <QuillEditor />;
-// };
 "use client";
 
 import PostModal from "@/component/Ui/modals/postModal";
 import PostSection from "./PostSection";
 import { useGetMyPostQuery } from "@/redux/app/featurs/api/post/postApi";
 import { TPost } from "@/types/types";
-
-// export default CreatePostPage;
 
 const PostPage = () => {
   const { data, isLoading } = useGetMyPostQuery(undefined);

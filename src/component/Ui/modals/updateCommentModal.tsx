@@ -24,25 +24,21 @@ const UpdateCommentModal = ({ com, item }: TProps) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const postID = item._id;
-    console.log(data);
-    // Comment data with the necessary fields
+
     const commentData = {
-      commentId: com._id, // Assuming 'com' contains the comment data
-      commentText: data.comment, // Updated comment text
+      commentId: com._id,
+      commentText: data.comment,
     };
 
     try {
       const res = await updateComment({
         postID,
-        ...commentData, // Spread commentData to pass individual fields
+        ...commentData,
       }).unwrap();
-      console.log(res);
 
       toast.success(`${res.message}`, { duration: 1000 });
     } catch (error: any) {
-      console.error("Error updating comment:", error);
-      // Optionally, display a toast for errors
-      // toast.error(error.data?.message || 'Failed to update comment', { duration: 1000 });
+      toast.error(error.data.message, { duration: 1000 });
     }
   };
 

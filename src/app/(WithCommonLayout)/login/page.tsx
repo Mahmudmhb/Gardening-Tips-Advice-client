@@ -34,8 +34,9 @@ const Login = () => {
       toast.success("logged in", { id: toastId, duration: 1000 });
       const userData = res?.data.user;
       const token = res?.data.token;
+      router.push("/user/dashboard");
+
       dispatch(signUser({ userData, token }));
-      // router.push(`/`);
     } catch (error) {
       toast.error("Something went wrong", { id: toastId, duration: 1000 });
     }

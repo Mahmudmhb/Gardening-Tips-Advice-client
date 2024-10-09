@@ -5,17 +5,17 @@ import UpdateCommentModal from "../modals/updateCommentModal";
 const CommentPage = ({ com, item }: TProps) => {
   return (
     <div>
-      <div className="bg-white p-4 max-w-2xl mx-auto rounded-lg shadow-md">
+      <div className="bg-white my-5 p-4 max-w-2xl mx-auto rounded-lg shadow-md">
         <div className="mb-4">
-          <div className="flex items-start mb-4">
+          <div className="flex items-start gap-6 mb-4">
             <Image
-              className="w-10 h-10 rounded-full mr-3"
+              className="w-10 h-10  rounded-full mr-3"
               src={com.user.profilePicture || "/"}
               alt="User Avatar"
               width={200}
               height={200}
             />
-            <div className="bg-gray-100 p-3 rounded-lg w-full">
+            <div className="bg-gray-100 ml-5 p-3 rounded-lg w-full">
               <div className="flex items-center justify-between">
                 <div>
                   <span className="font-semibold text-black">

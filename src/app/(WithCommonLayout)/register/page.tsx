@@ -28,11 +28,11 @@ const Register = () => {
         data.profilePicture = imageUrl;
         const res = await userRegitser(data).unwrap();
         console.log(data);
-        toast.success(`logged in  ${res.data.message}`, {
+        toast.success(`logged in  ${res.message}`, {
           id: toastId,
           duration: 1000,
         });
-        route.push("/");
+        route.push("/login");
         // console.log(res);
       } catch (error: any) {
         // toast.error("Something went wrong", { id: toastId, duration: 1000 });

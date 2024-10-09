@@ -68,6 +68,15 @@ export const postApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["posts"],
     }),
+    upvotePost: builder.mutation({
+      query: ({ postId }) => {
+        return {
+          url: `/post/upvote/${postId}`,
+          method: "PATCH",
+        };
+      },
+      invalidatesTags: ["posts"],
+    }),
   }),
 });
 export const {
@@ -78,4 +87,5 @@ export const {
   useUpdatePostInDbMutation,
   useDeletePostFromDbMutation,
   useUpdateCommentMutation,
+  useUpvotePostMutation,
 } = postApi;

@@ -11,6 +11,7 @@ export interface IUser {
   phone: string;
   address?: string;
   role: role;
+  premium: boolean;
 }
 
 export type TPost = {
