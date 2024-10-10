@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
 export default function layout({ children }: { children: ReactNode }) {
-  return <>{children}</>;
+  return <div className="bg-[#18191a]">{children}</div>;
 }

@@ -62,10 +62,6 @@ const QuillEditor: React.FC<QuillEditorProps> = ({ onCloseModal }) => {
 
   return (
     <div className="mx-auto p-4 text-[#000810] space-y-6">
-      <h1 className="text-xl text-[#000810] font-semibold mb-4 text-center">
-        Create a New Post
-      </h1>
-
       <ReactQuill
         value={editorHtml}
         onChange={setEditorHtml}

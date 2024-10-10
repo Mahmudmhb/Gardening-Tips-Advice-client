@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import PostUpdateModal from "../Ui/modals/postUpdateModal";
-import { FaTrashAlt } from "react-icons/fa";
-import { Button } from "@nextui-org/react";
+
 import { TPost } from "@/types/types";
 import Swal from "sweetalert2";
 import { useDeletePostFromDbMutation } from "@/redux/app/featurs/api/post/postApi";
@@ -46,15 +45,18 @@ export default function EditAndDeleteApp({ item }: { item: TPost }) {
     });
   };
   return (
-    <div className="flex gap-3">
+    <div className="flex items-center gap-5">
       <div>
         <PostUpdateModal item={item} />
       </div>
       <div>
-        <Button onClick={() => handleDelete(item._id)}>
+        <button
+          className="hover:bg-white rounded-full"
+          onClick={() => handleDelete(item._id)}
+        >
           {" "}
-          <FaTrashAlt />
-        </Button>
+          X
+        </button>
       </div>
     </div>
     // <Dropdown className="">

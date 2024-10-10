@@ -10,7 +10,7 @@ const ProfilePage = () => {
         <div className="col-span-3  space-y-5 sticky top-0">
           <AboutPage />
         </div>
-        <div className="col-span-4">
+        <div className="col-span-4 ">
           <PostPage />
         </div>
       </div>

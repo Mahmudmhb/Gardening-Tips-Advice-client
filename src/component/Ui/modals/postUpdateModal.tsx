@@ -4,7 +4,6 @@ import {
   Modal,
   ModalContent,
   ModalBody,
-  Button,
   useDisclosure,
 } from "@nextui-org/react";
 import { FaEdit } from "react-icons/fa";
@@ -16,9 +15,9 @@ export default function PostUpdateModal({ item }: { item: TPost }) {
 
   return (
     <>
-      <Button onPress={onOpen} className="uppercase w-full p-0">
+      <div onClick={onOpen} className="uppercase w-full p-0">
         <FaEdit />
-      </Button>
+      </div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent>
           {() => (

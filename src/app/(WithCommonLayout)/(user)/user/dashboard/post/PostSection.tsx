@@ -9,6 +9,7 @@ import EditAndDeleteApp from "@/component/dropdown/editAndDeleteDropdown";
 import { useUpvotePostMutation } from "@/redux/app/featurs/api/post/postApi";
 import { toast } from "sonner";
 import { Button } from "@nextui-org/react";
+import { IoMdChatboxes } from "react-icons/io";
 
 const PostSection = ({ item }: { item: TPost }) => {
   const [upvoteUpdate] = useUpvotePostMutation();
@@ -18,8 +19,6 @@ const PostSection = ({ item }: { item: TPost }) => {
     setVisibleComments(item.comments.length);
   };
   const handleUpvote = async (postId: string) => {
-    console.log("postId", postId);
-
     try {
       const res = await upvoteUpdate({ postId }).unwrap();
 
@@ -29,10 +28,9 @@ const PostSection = ({ item }: { item: TPost }) => {
     }
   };
   return (
-    <div className="bg-slate-200 text-[#000810] p-4 rounded-lg shadow-md">
-      {/* User Info */}
+    <div className=" text-[#dddfe4] bg-[#242526] p-4 rounded-lg shadow-md">
       <div className="flex justify-between items-center space-x-4 mb-4">
-        <div>
+        <div className="flex  items-center gap-5">
           <div className="w-12 h-12 relative">
             <Image
               src={item.user.profilePicture! || "/default-image.jpg"}
@@ -51,7 +49,7 @@ const PostSection = ({ item }: { item: TPost }) => {
         </button>
       </div>
 
-      <p className="mb-4 text-gray-800">
+      <p className="mb-4 ">
         <HtmlContent content={item.text} />
       </p>
 
@@ -66,7 +64,7 @@ const PostSection = ({ item }: { item: TPost }) => {
         </div>
       )}
 
-      <div className="flex items-center justify-between text-gray-500">
+      <div className="flex border-t border-b border-slate-500 py-2 items-center justify-between text-gray-500">
         <button className="flex items-center space-x-2 hover:text-blue-500">
           <div>
             {item.upvotesCount}{" "}
@@ -75,20 +73,8 @@ const PostSection = ({ item }: { item: TPost }) => {
         </button>
 
         <button className="flex items-center space-x-2 hover:text-blue-500">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M8 10h.01M12 10h.01M16 10h.01M9 16h6m-3-6v6m0 6a9 9 0 110-18 9 9 0 010 18z"
-            />
-          </svg>
+          <IoMdChatboxes />
+
           <CommentModal item={item} />
         </button>
 

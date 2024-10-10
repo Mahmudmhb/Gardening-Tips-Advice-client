@@ -35,8 +35,8 @@ const CommentModal = ({ item }: { item: TPost }) => {
     }
   };
   return (
-    <div className="text-black">
-      <Button onPress={onOpen}>Comments</Button>
+    <div className="text-gray-500 hover:text-blue-500">
+      <div onClick={onOpen}>Comments</div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (

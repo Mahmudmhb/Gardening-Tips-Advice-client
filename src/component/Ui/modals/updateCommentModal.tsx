@@ -44,11 +44,11 @@ const UpdateCommentModal = ({ com, item }: TProps) => {
 
   return (
     <div className="text-black">
-      <Button onPress={onOpen}>
+      <div className="text-white" onClick={onOpen}>
         <FaEdit />
-      </Button>
+      </div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent>
+        <ModalContent className="">
           {(onClose) => (
             <>
               <form onSubmit={handleSubmit(onSubmit)}>

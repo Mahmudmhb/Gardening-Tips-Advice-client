@@ -17,15 +17,18 @@ export default function PostModal() {
   return (
     <>
       <Button onPress={onOpen} className="uppercase w-full p-0">
-        <TfiWrite className="text-3xl ml-3" />
-        <Input isReadOnly defaultValue="What's on your mind?" />
+        <TfiWrite className="text-3xl  ml-3" />
+        <Input
+          isReadOnly
+          className="bg-black"
+          defaultValue="What's on your mind? "
+        />
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent>
           {() => (
             <>
               <ModalBody>
-                {/* Pass the onCloseModal prop to close the modal */}
                 <QuillEditor onCloseModal={() => onOpenChange()} />
               </ModalBody>
             </>

@@ -26,7 +26,6 @@ const ProfileLayout = () => {
   };
   return (
     <div className=" mx-auto p-4">
-      {/* Profile Header */}
       <div className="flex items-center space-x-4 p-4 border-b border-gray-300">
         <div className="w-24 h-24 relative">
           <Image
@@ -66,7 +65,6 @@ const ProfileLayout = () => {
         </div>
       </div>
 
-      {/* Profile Tabs */}
       <div className="flex  justify-between  items-center">
         <div
           className="flex space-x-8 my-4
@@ -84,9 +82,6 @@ const ProfileLayout = () => {
           <UpdateModal />
         </div>
       </div>
-
-      {/* Post Section */}
-      {/* <PostSection /> */}
     </div>
   );
 };
