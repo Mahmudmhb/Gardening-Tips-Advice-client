@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import UpdateModal from "../modals/updateUserModal";
 import { SidebarOptions } from "@/component/sidebarOptions";
 import { adminLinks, userLinks } from "@/component/constents";
@@ -8,10 +7,11 @@ import { useCurrnetUser } from "@/redux/app/featurs/api/auth/authSlice";
 import { Button } from "@nextui-org/react";
 import { toast } from "sonner";
 import { usePaymentOfVerifyMutation } from "@/redux/app/featurs/api/user/userApi";
+import Image from "next/image";
+import { MdVerified } from "react-icons/md";
 
 const ProfileLayout = () => {
   const user = useAppSelector(useCurrnetUser);
-  console.log(user);
   const [paymentInfo] = usePaymentOfVerifyMutation();
   const handlePayment = async () => {
     const payment = {
@@ -27,12 +27,13 @@ const ProfileLayout = () => {
   return (
     <div className=" mx-auto p-4">
       <div className="flex items-center space-x-4 p-4 border-b border-gray-300">
-        <div className="w-24 h-24 relative">
+        <div className=" relative">
           <Image
             src={user?.profilePicture as string}
             alt="Profile Picture"
-            layout="fill"
-            className="rounded-full object-cover"
+            className="rounded-full w-32 h-32 "
+            width={100}
+            height={100}
           />
           {user?.verified === true && (
             <span className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold rounded-full px-2 py-1">
@@ -41,26 +42,26 @@ const ProfileLayout = () => {
           )}
         </div>
         <div>
-          <h1 className="text-3xl font-bold uppercase">{user?.username}</h1>
-
-          <div className="flex justify-between gap-4">
-            <div>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Deserunt, voluptatem.
-            </div>
-            <div>
-              {user?.verified === true ? (
-                <Button color="success">Verified</Button>
-              ) : (
-                <>
-                  {user?.premium === true && (
-                    <Button onClick={() => handlePayment()}>
-                      Verify your profile
-                    </Button>
-                  )}
-                </>
-              )}
-            </div>
+          <h1 className="text-3xl flex gap-3 items-center font-bold uppercase">
+            {user?.username}{" "}
+            {user?.verified === true && (
+              <div>
+                <MdVerified className="text-[#31a24c] text-xl" />
+              </div>
+            )}
+          </h1>
+          <h1>
+            {user?.followers?.length} followers • {user?.following?.length}{" "}
+            following
+          </h1>
+        </div>
+        <div className="flex justify-between gap-4">
+          <div>
+            {user?.verified === false && user.premium === true && (
+              <Button onClick={() => handlePayment()}>
+                Verify your profile
+              </Button>
+            )}
           </div>
         </div>
       </div>

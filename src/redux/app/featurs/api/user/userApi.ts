@@ -35,6 +35,7 @@ export const userApi = baseApi.injectEndpoints({
           body: payment,
         };
       },
+      invalidatesTags: ["users"],
     }),
   }),
 });

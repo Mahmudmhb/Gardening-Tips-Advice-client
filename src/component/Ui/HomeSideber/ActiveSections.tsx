@@ -16,7 +16,7 @@ const ActiveSections = () => {
       <h1 className="text-xl font-bold mb-4">Contacts</h1>
       <ul className="divide-y">
         {users?.map((user: IUser) => (
-          <li key={user._id} className="flex items-center py-2">
+          <li key={user._id} className="flex gap-3 items-center py-2">
             <Image
               src={user.profilePicture || "fallback-image-url"} // Replace with an actual fallback image URL
               alt={`${user.username}'s profile`}

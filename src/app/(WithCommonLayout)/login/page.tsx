@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { useLoginUserMutation } from "@/redux/app/featurs/api/auth/authApi";
@@ -37,8 +38,8 @@ const Login = () => {
       router.push("/user/dashboard");
 
       dispatch(signUser({ userData, token }));
-    } catch (error) {
-      toast.error("Something went wrong", { id: toastId, duration: 1000 });
+    } catch (error: any) {
+      toast.error(error.data.message, { id: toastId, duration: 1000 });
     }
   };
 

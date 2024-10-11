@@ -25,7 +25,7 @@ const UpdatePostPage = ({ item }: { item: TPost }) => {
   const categories = ["Vegetables", "Flowers", "Landscaping"];
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    toast.loading("Post updating", { duration: 1000 });
+    const postId = toast.loading("Post updating", { duration: 1000 });
     const user = loginUser?._id;
 
     if (data.image && data.image.length > 0) {
@@ -56,9 +56,9 @@ const UpdatePostPage = ({ item }: { item: TPost }) => {
     try {
       const res = await updatePostMutation(arts).unwrap();
       console.log("check", res);
-      toast.success(`${res.message}`, { duration: 1000 });
+      toast.success(`${res.message}`, { id: postId, duration: 1000 });
     } catch (error: any) {
-      toast.error(error.data.message, { duration: 1000 });
+      toast.error(error.data.message, { id: postId, duration: 1000 });
     }
   };
 

@@ -17,7 +17,11 @@ const AboutPage = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1>Intro</h1>
+        <h1 className="text-xl font-extrabold">Intro</h1>
+        <div className="text-center">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt,
+          voluptatem.
+        </div>
       </div>
       <div className="flex gap-3 items-center">
         <h1 className="text-2xl ">
