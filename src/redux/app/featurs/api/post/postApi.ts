@@ -15,6 +15,16 @@ export const postApi = baseApi.injectEndpoints({
       }),
       providesTags: ["posts"],
     }),
+    getCategoryPost: builder.query({
+      query: ({ category }) => {
+        console.log("filter category", category);
+        return {
+          url: `/post/category/${category}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["posts"],
+    }),
     createPost: builder.mutation({
       query: (data) => {
         return {
@@ -88,4 +98,5 @@ export const {
   useDeletePostFromDbMutation,
   useUpdateCommentMutation,
   useUpvotePostMutation,
+  useGetCategoryPostQuery,
 } = postApi;

@@ -1,6 +1,6 @@
 import { useGetAllUserQuery } from "@/redux/app/featurs/api/user/userApi";
 import { IUser } from "@/types/types";
-import Image from "next/image";
+import { User } from "@nextui-org/react";
 import React from "react";
 
 const ActiveSections = () => {
@@ -17,19 +17,17 @@ const ActiveSections = () => {
       <ul className="divide-y">
         {users?.map((user: IUser) => (
           <li key={user._id} className="flex gap-3 items-center py-2">
-            <Image
-              src={user.profilePicture || "fallback-image-url"} // Replace with an actual fallback image URL
-              alt={`${user.username}'s profile`}
-              className="w-10 h-10 rounded-full mr-3"
-              width={500}
-              height={500}
-            />
-            <div className="flex-1">
-              <span className="font-semibold">{user.username}</span>
-              {user.verified && (
-                <span className="text-green-500 text-sm ml-2">• verified</span>
-              )}
-            </div>
+            <User
+              as="button"
+              name={user.username}
+              className="transition-transform"
+              avatarProps={{
+                src: user.profilePicture,
+              }}
+            />{" "}
+            {user.verified && (
+              <span className="text-green-500 text-sm ml-2"> verified</span>
+            )}
           </li>
         ))}
       </ul>

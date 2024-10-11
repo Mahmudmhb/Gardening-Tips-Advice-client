@@ -12,6 +12,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { uploadImage } from "@/utilis/imageBD";
 import { toast } from "sonner";
 
+export const categories = ["Vegetables", "Flowers", "Landscaping"];
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface QuillEditorProps {
@@ -23,8 +24,6 @@ const QuillEditor: React.FC<QuillEditorProps> = ({ onCloseModal }) => {
   const [createPost] = useCreatePostMutation();
   const loginUser = useAppSelector(useCurrnetUser);
   const { register, handleSubmit } = useForm();
-
-  const categories = ["Vegetables", "Flowers", "Landscaping"];
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("Post Creating", { duration: 1000 });
