@@ -9,11 +9,11 @@ export default function layout({ children }: { children: ReactNode }) {
     <Container>
       <div className=" bg-[#18191a]  gap-12">
         <div className="w-5/6 mx-auto">
-          {/* <Sidebar />
-           */}
           <ProfileLayout />
         </div>
-        <div className="w-5/6 mx-auto  mt-10">{children}</div>
+        <div className="w-5/6 mx-auto bg-[#18191a]   h-screen mt-10">
+          {children}
+        </div>
       </div>
     </Container>
   );

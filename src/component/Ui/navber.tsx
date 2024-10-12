@@ -5,43 +5,42 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  Input,
 } from "@nextui-org/react";
-import { FaHome, FaSearch } from "react-icons/fa";
+import NextLink from "next/link";
 import NavbarDropdown from "./navberDropdown";
+import { useAppSelector } from "@/redux/app/hooks";
+import { useCurrnetUser } from "@/redux/app/featurs/api/auth/authSlice";
+import { siteConfig } from "@/config/site";
 
 export default function Navber() {
+  const user = useAppSelector(useCurrnetUser);
   return (
-    <Navbar isBordered>
+    <Navbar className="border-b">
       <NavbarContent justify="start">
         <NavbarBrand className="mr-4">
           <p className=" sm:block font-bold text-inherit">MHB Garden</p>
         </NavbarBrand>
-        <NavbarContent className=" sm:flex gap-3">
-          <NavbarItem>
-            <Link color="success" href="/">
-              <FaHome className="text-2xl " />
-            </Link>
+      </NavbarContent>
+      <NavbarContent className=" sm:flex gap-3">
+        {siteConfig.navItems.map((item) => (
+          <NavbarItem key={item.href}>
+            <NextLink href={item.href}>{item.label}</NextLink>
           </NavbarItem>
-        </NavbarContent>
+        ))}
       </NavbarContent>
 
       <NavbarContent as="div" className="items-center" justify="end">
-        <Input
-          classNames={{
-            base: "max-w-full sm:max-w-[10rem] h-10",
-            mainWrapper: "h-full",
-            input: "text-small",
-            inputWrapper:
-              "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-          }}
-          placeholder="Type to search..."
-          size="sm"
-          startContent={<FaSearch size={18} />}
-          type="search"
-        />
-        <NavbarDropdown />
+        {user?.email ? (
+          <>
+            <NavbarDropdown />
+          </>
+        ) : (
+          <>
+            <NextLink className="text-green-600" href="/login">
+              Login
+            </NextLink>
+          </>
+        )}
       </NavbarContent>
     </Navbar>
   );

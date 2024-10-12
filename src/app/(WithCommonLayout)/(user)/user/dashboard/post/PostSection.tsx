@@ -10,6 +10,8 @@ import { useUpvotePostMutation } from "@/redux/app/featurs/api/post/postApi";
 import { toast } from "sonner";
 import { Button } from "@nextui-org/react";
 import { IoMdChatboxes } from "react-icons/io";
+import NextLink from "next/link";
+import { MdVerified } from "react-icons/md";
 
 const PostSection = ({ item }: { item: TPost }) => {
   const [upvoteUpdate] = useUpvotePostMutation();
@@ -40,8 +42,28 @@ const PostSection = ({ item }: { item: TPost }) => {
             />
           </div>
           <div>
-            <p className="font-semibold">{item?.user?.username as string}</p>
-            <p className="text-sm text-gray-500">2 hours ago</p>
+            <div className="flex items-center gap-2">
+              <NextLink
+                href={`/profile/${item?.user?.username}/${item?.user?._id}`}
+              >
+                <p className="font-semibold">
+                  {item?.user?.username as string}
+                </p>
+              </NextLink>
+              <div>
+                {item.user.verified && (
+                  <div>
+                    <MdVerified className="text-white text-xl" />
+                  </div>
+                )}
+              </div>
+            </div>
+            <p className="text-sm text-gray-500">
+              {new Date(item.createdAt!).toLocaleTimeString("en-US", {
+                hour12: false,
+              })}{" "}
+              time
+            </p>
           </div>
         </div>
         <button>

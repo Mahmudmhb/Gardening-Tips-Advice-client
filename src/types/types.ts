@@ -24,6 +24,8 @@ export type TPost = {
   category: string;
   premium: boolean;
   comments: [];
+  updatedAt?: string;
+  createdAt?: string;
 };
 export type TCommnets = {
   _id?: string;

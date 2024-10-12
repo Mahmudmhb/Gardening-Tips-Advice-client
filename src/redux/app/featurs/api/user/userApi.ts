@@ -10,11 +10,14 @@ export const userApi = baseApi.injectEndpoints({
       providesTags: ["users"],
     }),
     getSingleUser: builder.query({
-      query: ({ userID }) => ({
-        url: `/user/${userID}`,
-        method: "GET",
-      }),
-      providesTags: ["users"],
+      query: ({ userID }) => {
+        console.log(userID);
+        return {
+          url: `/user/${userID}`,
+          method: "GET",
+        };
+      },
+      // providesTags: ["users"],
     }),
     updateUser: builder.mutation({
       query: ({ userID, data }) => {

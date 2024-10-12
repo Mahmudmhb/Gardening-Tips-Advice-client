@@ -1,7 +1,8 @@
 "use client";
 import { useGetAllPostQuery } from "@/redux/app/featurs/api/post/postApi";
 import { TPost } from "@/types/types";
-import { Button, Card, CardFooter } from "@nextui-org/react";
+import NextLink from "next/link";
+import { Card, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
 
 const ImageGallery = () => {
@@ -9,7 +10,7 @@ const ImageGallery = () => {
   const gallary = data?.data;
   const filterImage = gallary?.filter((item: TPost) => item.image !== null);
   return (
-    <div>
+    <div className="min-h-screen w-11/12 mx-auto my-10">
       {isLoading && (
         <>
           <div>
@@ -22,7 +23,7 @@ const ImageGallery = () => {
           <Card
             key={img._id}
             isFooterBlurred
-            className=" h-[300px] col-span-12 sm:col-span-5"
+            className=" h-[400px] w-[400px] col-span-12 sm:col-span-5"
           >
             <Image
               alt={img.user.username}
@@ -32,14 +33,13 @@ const ImageGallery = () => {
               width={300}
             />
             <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
-              <Button
+              <NextLink
+                href={`/gallery/${img._id}`}
                 className="text-tiny"
                 color="primary"
-                radius="full"
-                size="sm"
               >
                 Notify Me
-              </Button>
+              </NextLink>
             </CardFooter>
           </Card>
         ))}

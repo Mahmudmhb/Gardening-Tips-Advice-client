@@ -15,6 +15,16 @@ export const postApi = baseApi.injectEndpoints({
       }),
       providesTags: ["posts"],
     }),
+    getSinglePost: builder.query({
+      query: ({ id }) => {
+        console.log("filter category", id);
+        return {
+          url: `/post/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["posts"],
+    }),
     getCategoryPost: builder.query({
       query: ({ category }) => {
         console.log("filter category", category);
@@ -91,6 +101,7 @@ export const postApi = baseApi.injectEndpoints({
 });
 export const {
   useCreatePostMutation,
+  useGetSinglePostQuery,
   useGetAllPostQuery,
   useGetMyPostQuery,
   useCreateCommentMutation,

@@ -5,12 +5,12 @@ import PostPage from "./post/page";
 
 const ProfilePage = () => {
   return (
-    <div className="">
-      <div className="md:grid grid-cols-7 h-screen justify-evenly">
+    <div className=" bg-[#18191a]  ">
+      <div className="md:grid grid-cols-7  justify-evenly">
         <div className="col-span-3  space-y-5 sticky top-0">
           <AboutPage />
         </div>
-        <div className="col-span-4 ">
+        <div className="col-span-4  h-screen">
           <PostPage />
         </div>
       </div>
