@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
+import Cookies from "js-cookie";
 import { useLoginUserMutation } from "@/redux/app/featurs/api/auth/authApi";
 import { signUser } from "@/redux/app/featurs/api/auth/authSlice";
 import { useAppDispatch } from "@/redux/app/hooks";
@@ -31,13 +32,16 @@ const Login = () => {
     const toastId = toast.loading("logging in", { duration: 1000 });
     try {
       const res = await userLogin(data).unwrap();
-      console.log(res);
       toast.success("logged in", { id: toastId, duration: 1000 });
       const userData = res?.data.user;
       const token = res?.data.token;
-      router.push("/user/dashboard");
-
       dispatch(signUser({ userData, token }));
+      Cookies.set("token", token);
+      if (userData.role === "user") {
+        router.push("/user/dashboard");
+      } else {
+        router.push("/admin/dashboard");
+      }
     } catch (error: any) {
       toast.error(error.data.message, { id: toastId, duration: 1000 });
     }

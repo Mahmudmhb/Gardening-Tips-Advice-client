@@ -12,8 +12,8 @@ const Home = () => {
   const user = useAppSelector(useCurrnetUser);
 
   return (
-    <div className="grid grid-cols-4 gap-10 h-screen">
-      <div className="col-span-1">
+    <div className="md:grid lg:grid grid-cols-4 gap-10 h-screen">
+      <div className="col-span-1 hidden md:flex lg:flex">
         <HomeSideber />
       </div>
       <ScrollShadow
@@ -38,7 +38,7 @@ const Home = () => {
           <PostFilterAndSearch />
         </div>
       </ScrollShadow>
-      <div className="col-span-1">
+      <div className="col-span-1 hidden md:flex lg:flex">
         <ActiveSections />
       </div>
     </div>

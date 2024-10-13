@@ -7,10 +7,10 @@ const ProfilePage = () => {
   return (
     <div className=" bg-[#18191a]  ">
       <div className="md:grid grid-cols-7  justify-evenly">
-        <div className="col-span-3  space-y-5 sticky top-0">
+        <div className="col-span-3  space-y-5 md:sticky top-0">
           <AboutPage />
         </div>
-        <div className="col-span-4  h-screen">
+        <div className="col-span-4  min-h-screen">
           <PostPage />
         </div>
       </div>

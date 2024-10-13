@@ -1,8 +1,9 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + NextUI",
-  description: "Make beautiful websites regardless of your design experience.",
+  name: "MHB Garden",
+  description:
+    "Welcome to MHB Garden, your go-to platform for gardening tips, plant care advice, and a thriving community of gardening enthusiasts",
   navItems: [
     {
       label: "News-feed",
@@ -20,20 +21,6 @@ export const siteConfig = {
     {
       label: "Contact Us",
       href: "/contact-us",
-    },
-  ],
-  navMenuItems: [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
-    {
-      label: "Found Items",
-      href: "/found-items",
     },
   ],
 };

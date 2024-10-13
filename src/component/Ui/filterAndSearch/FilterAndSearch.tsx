@@ -35,8 +35,8 @@ const PostFilterAndSearch = () => {
     <div className=" mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Posts</h2>
 
-      <div className="flex items-center justify-between">
-        <div className=" w-[70%] ">
+      <div className="md:flex items-center justify-between">
+        <div className="  ">
           <Input
             onChange={(e) => setSearchText(e.target.value)}
             classNames={{
@@ -55,7 +55,7 @@ const PostFilterAndSearch = () => {
           />
         </div>
 
-        <div className=" w-[30%]">
+        <div className=" ">
           <select
             className="border p-2 text-black rounded-md w-full mt-2"
             onChange={(e) => setCategory(e.target.value)}

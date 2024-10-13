@@ -30,7 +30,7 @@ const PostSection = ({ item }: { item: TPost }) => {
     }
   };
   return (
-    <div className=" text-[#dddfe4] bg-[#242526] p-4 rounded-lg shadow-md">
+    <div className=" text-[#dddfe4] bg-[#242526] p-2 md:p-4 rounded-lg shadow-md">
       <div className="flex justify-between items-center space-x-4 mb-4">
         <div className="flex  items-center gap-5">
           <div className="w-12 h-12 relative">

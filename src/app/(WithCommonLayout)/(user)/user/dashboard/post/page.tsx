@@ -10,7 +10,7 @@ const PostPage = () => {
 
   const postData = data?.data;
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="md:w-11/12 mx-auto">
       <CreatePost />
       <div className="space-y-6  mx-auto   p-4">
         {isLoading && <div>Loading...</div>}

@@ -1,6 +1,11 @@
 "use client";
 
 import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -11,22 +16,44 @@ import NavbarDropdown from "./navberDropdown";
 import { useAppSelector } from "@/redux/app/hooks";
 import { useCurrnetUser } from "@/redux/app/featurs/api/auth/authSlice";
 import { siteConfig } from "@/config/site";
+import Link from "next/link";
+import { MdMenu } from "react-icons/md";
 
 export default function Navber() {
   const user = useAppSelector(useCurrnetUser);
   return (
     <Navbar className="border-b">
+      <div className="lg:hidden  md:hidden sm:flex">
+        <NavbarContent justify="start">
+          <Dropdown placement="bottom-end" className="text-black">
+            <DropdownTrigger>
+              <MdMenu />
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Profile Actions" variant="flat">
+              {siteConfig.navItems.map((item) => (
+                <DropdownItem key={item.href}>
+                  <NextLink href={item.href}>{item.label}</NextLink>
+                </DropdownItem>
+              ))}
+            </DropdownMenu>
+          </Dropdown>
+        </NavbarContent>
+      </div>
       <NavbarContent justify="start">
-        <NavbarBrand className="mr-4">
-          <p className=" sm:block font-bold text-inherit">MHB Garden</p>
+        <NavbarBrand>
+          <p className=" font-bold text-inherit hidden md:flex lg:flex">
+            MHB Garden
+          </p>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent className=" sm:flex gap-3">
-        {siteConfig.navItems.map((item) => (
-          <NavbarItem key={item.href}>
-            <NextLink href={item.href}>{item.label}</NextLink>
-          </NavbarItem>
-        ))}
+      <NavbarContent justify="center">
+        <div className="hidden md:flex lg:flex  gap-3">
+          {siteConfig.navItems.map((item) => (
+            <NavbarItem key={item.href}>
+              <NextLink href={item.href}>{item.label}</NextLink>
+            </NavbarItem>
+          ))}
+        </div>
       </NavbarContent>
 
       <NavbarContent as="div" className="items-center" justify="end">
@@ -36,9 +63,12 @@ export default function Navber() {
           </>
         ) : (
           <>
-            <NextLink className="text-green-600" href="/login">
+            <Button as={Link} color="primary" href="/login" variant="flat">
+              Sign Up
+            </Button>
+            {/* <NextLink className="text-green-600" >
               Login
-            </NextLink>
+            </NextLink> */}
           </>
         )}
       </NavbarContent>

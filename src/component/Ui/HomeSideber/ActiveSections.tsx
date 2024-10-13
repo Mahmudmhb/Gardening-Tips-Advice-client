@@ -2,6 +2,8 @@ import { useGetAllUserQuery } from "@/redux/app/featurs/api/user/userApi";
 import { IUser } from "@/types/types";
 import { User } from "@nextui-org/react";
 import React from "react";
+import { MdVerified } from "react-icons/md";
+import NextLink from "next/link";
 
 const ActiveSections = () => {
   const { data, isLoading } = useGetAllUserQuery(undefined);
@@ -17,16 +19,22 @@ const ActiveSections = () => {
       <ul className="divide-y">
         {users?.map((user: IUser) => (
           <li key={user._id} className="flex gap-3 items-center py-2">
-            <User
-              as="button"
-              name={user.username}
-              className="transition-transform"
-              avatarProps={{
-                src: user.profilePicture,
-              }}
-            />{" "}
+            <div className="flex items-center gap-2">
+              <NextLink href={`/profile/${user?.username}/${user?._id}`}>
+                <User
+                  as="button"
+                  name={user.username}
+                  className="transition-transform"
+                  avatarProps={{
+                    src: user.profilePicture,
+                  }}
+                />
+              </NextLink>
+            </div>
             {user.verified && (
-              <span className="text-green-500 text-sm ml-2"> verified</span>
+              <div>
+                <MdVerified className="text-white text-xl" />
+              </div>
             )}
           </li>
         ))}

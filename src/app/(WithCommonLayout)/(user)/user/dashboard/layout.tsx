@@ -11,7 +11,7 @@ export default function layout({ children }: { children: ReactNode }) {
         <div className="w-5/6 mx-auto">
           <ProfileLayout />
         </div>
-        <div className="w-5/6 mx-auto bg-[#18191a]   h-screen mt-10">
+        <div className="md:w-5/6 mx-auto bg-[#18191a]   min-h-screen mt-10">
           {children}
         </div>
       </div>

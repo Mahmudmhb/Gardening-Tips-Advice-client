@@ -26,7 +26,7 @@ const ProfileLayout = () => {
   };
   return (
     <div className=" mx-auto p-4">
-      <div className="flex items-center space-x-4 p-4 border-b border-gray-300">
+      <div className="md:flex items-center space-x-4 p-4 border-b border-gray-300">
         <div className=" relative">
           <Image
             src={user?.profilePicture as string}
@@ -66,9 +66,9 @@ const ProfileLayout = () => {
         </div>
       </div>
 
-      <div className="flex  justify-between  items-center">
+      <div className="flex  flex-wrap justify-between  items-center">
         <div
-          className="flex space-x-8 my-4
+          className="md:flex  space-x-8 my-4
           pb-2 "
         >
           <SidebarOptions

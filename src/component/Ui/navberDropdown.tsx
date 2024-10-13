@@ -15,7 +15,7 @@ import {
   logoutUser,
   useCurrnetUser,
 } from "@/redux/app/featurs/api/auth/authSlice";
-
+import Cookies from "js-cookie";
 const NavbarDropdown = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -23,15 +23,16 @@ const NavbarDropdown = () => {
   const user = useAppSelector(useCurrnetUser);
 
   if (protectedRoutes.some((route) => pathname.match(route))) {
-    // router.push("/");
+    router.push("/");
   }
 
   const handleNavigation = (pathname: string) => {
-    // router.push(pathname);
+    router.push(pathname);
     console.log(pathname);
   };
   const handleLogout = () => {
     dispatch(logoutUser());
+    Cookies.remove("token");
   };
 
   return (
