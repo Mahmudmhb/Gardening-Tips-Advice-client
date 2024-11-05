@@ -12,6 +12,7 @@ export interface IUser {
   address?: string;
   role: role;
   premium: boolean;
+  favorite: [];
 }
 
 export type TPost = {

@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 const UserActivity = () => {
   const { data, isLoading } = useGetAllUserQuery(undefined);
   const userData = data?.data;
+  console.log(userData);
 
   if (isLoading) {
     return (

@@ -19,7 +19,7 @@ const Register = () => {
   } = useForm<IUser>();
 
   const onSubmit: SubmitHandler<IUser> = async (data) => {
-    const toastId = toast.loading("logging in", { duration: 1000 });
+    const toastId = toast.loading("Registering in", { duration: 1000 });
     if (data.profilePicture && data.profilePicture.length > 0) {
       try {
         const file = data.profilePicture[0] as any;

@@ -57,10 +57,10 @@ const PostFilterAndSearch = () => {
 
         <div className=" ">
           <select
-            className="border p-2 text-black rounded-md w-full mt-2"
+            className="border bg-default-400/20 text-default-500 p-2 rounded-md w-full mt-2"
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="" className="text-black">
+            <option value="" className="text-black bg-default-400/20">
               Select Category
             </option>
             {categories.map((cat) => (

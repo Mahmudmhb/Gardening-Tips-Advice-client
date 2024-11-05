@@ -16,20 +16,25 @@ import {
   useCurrnetUser,
 } from "@/redux/app/featurs/api/auth/authSlice";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
+
 const NavbarDropdown = () => {
   const router = useRouter();
   const pathname = usePathname();
   const dispatch = useAppDispatch();
   const user = useAppSelector(useCurrnetUser);
 
-  if (protectedRoutes.some((route) => pathname.match(route))) {
-    router.push("/");
-  }
+  useEffect(() => {
+    if (protectedRoutes.some((route) => pathname.match(route))) {
+      router.push("/");
+    }
+  }, [pathname, router]);
 
   const handleNavigation = (pathname: string) => {
     router.push(pathname);
     console.log(pathname);
   };
+
   const handleLogout = () => {
     dispatch(logoutUser());
     Cookies.remove("token");
@@ -51,19 +56,18 @@ const NavbarDropdown = () => {
       <DropdownMenu aria-label="Profile Actions" variant="flat">
         <DropdownItem key="profile" className="h-14 gap-2">
           <p className="font-semibold">Signed in as</p>
-          <p className="font-semibold">{user?.email}</p>
+          <p className="font-semibold">{user?.email || "Guest"}</p>
         </DropdownItem>
         <DropdownItem
-          key="settings"
-          onClick={() => handleNavigation("/user/dashboard")}
+          key={user?.role === "user" ? "user-settings" : "admin-settings"}
+          onClick={() =>
+            handleNavigation(
+              user?.role === "user" ? "/user/dashboard" : "/admin/dashboard"
+            )
+          }
         >
           My Profile
         </DropdownItem>
-        <DropdownItem key="team_settings">Team Settings</DropdownItem>
-        <DropdownItem key="analytics">Analytics</DropdownItem>
-        <DropdownItem key="system">System</DropdownItem>
-
-        <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
         <DropdownItem
           key="logout"
           color="danger"
@@ -75,4 +79,5 @@ const NavbarDropdown = () => {
     </Dropdown>
   );
 };
+
 export default NavbarDropdown;

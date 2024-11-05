@@ -97,6 +97,15 @@ export const postApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["posts"],
     }),
+    favoritePost: builder.mutation({
+      query: ({ postId }) => {
+        return {
+          url: `/post/favorite/${postId}`,
+          method: "PATCH",
+        };
+      },
+      invalidatesTags: ["posts"],
+    }),
   }),
 });
 export const {
@@ -110,4 +119,5 @@ export const {
   useUpdateCommentMutation,
   useUpvotePostMutation,
   useGetCategoryPostQuery,
+  useFavoritePostMutation,
 } = postApi;

@@ -41,9 +41,11 @@ export default function Navber() {
       </div>
       <NavbarContent justify="start">
         <NavbarBrand>
-          <p className=" font-bold text-inherit hidden md:flex lg:flex">
-            MHB Garden
-          </p>
+          <Link href="/">
+            <p className="font-bold text-inherit hidden md:flex lg:flex">
+              MHB Garden
+            </p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent justify="center">
@@ -63,8 +65,13 @@ export default function Navber() {
           </>
         ) : (
           <>
-            <Button as={Link} color="primary" href="/login" variant="flat">
-              Sign Up
+            <Button
+              as={Link}
+              className="text-white"
+              href="/login"
+              variant="flat"
+            >
+              Login
             </Button>
             {/* <NextLink className="text-green-600" >
               Login
