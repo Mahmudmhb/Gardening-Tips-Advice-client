@@ -1,9 +1,10 @@
-#[Gardening Tips & Advice Platform](https://gardening-tips.vercel.app/)
+Gardening Tips & Advice Platform
 
 1. Project Overview
    The Gardening Tips & Advice Platform is a full-stack web application built for gardening enthusiasts and professionals. This platform offers users a wealth of knowledge, including gardening tips, seasonal guides, and plant care advice, all designed to enhance their gardening experience. The platform fosters a community where users can share insights, interact with others, and access premium content with payment integration.
 
-Key Features
+# Key Features
+
 Community-Focused: Users can post tips, upvote content, comment, and follow other users.
 Rich Content Creation: A built-in rich text editor allows for multimedia content sharing.
 Premium Content Access: Verified users can access exclusive, premium content.
@@ -66,47 +67,52 @@ A “Share” button for easy link copying of each post.
 Unique Feature: Gardening Seasons Calendar
 A gardening seasons calendar that helps users plan activities by displaying optimal planting times for various plants and flowers.
 
-Installation
+#Installation
 Prerequisites
 Node.js: Ensure you have Node.js installed.
 MongoDB: Set up MongoDB for data storage.
 Stripe/AAMARPAY API Keys: Obtain API keys for payment integration.
 Steps
+
 Clone the Repository:
 
-bash
+`bash
 Copy code
 git clone https://github.com/your-username/gardening-tips-platform.git
-cd gardening-tips-platform
+cd gardening-tips-platform`
+
 Install Dependencies:
 
-bash
+`bash
 Copy code
-npm install
+npm install `
 Environment Variables: Create a .env file and set the following:
 
 env
-Copy code
+`Copy code
 PORT=5000
 DATABASE_URL=mongodb://localhost:27017/gardening-platform
 JWT_SECRET=your_jwt_secret
-STRIPE_API_KEY=your_stripe_api_key
+STRIPE_API_KEY=your_stripe_api_key `
 Run the Application:
 
-bash
+`bash
 Copy code
 npm run dev
-Usage
+Usage `
+
 Register/Login: Create an account or log in.
 Explore Content: Browse, upvote, comment, and share gardening tips.
 Premium Content: Verified users can access premium tips.
 Admin Dashboard: Available to admins for moderation and management.
-Technologies Used
+
+# Technologies Used
+
 Frontend: Next.js, TypeScript
 Backend: Express, Node.js
 Database: MongoDB
 Authentication: JWT
 Payment Integration: AAMARPAY/Stripe
 Rich Text Editor: Quill or Draft.js (for multimedia content support)
-Contributing
-We welcome contributions! Please fork the repository and create a pull request with a descriptive message for your changes.
+
+ChatGPT can make m
