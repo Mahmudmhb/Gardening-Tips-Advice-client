@@ -7,16 +7,16 @@ import {
   DropdownTrigger,
 } from "@nextui-org/dropdown";
 import { Avatar } from "@nextui-org/avatar";
-
 import { protectedRoutes } from "@/utilis/constents";
 import { usePathname, useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+
+import Cookies from "js-cookie";
+import { useEffect } from "react";
 import {
   logoutUser,
   useCurrnetUser,
 } from "@/redux/app/featurs/api/auth/authSlice";
-import Cookies from "js-cookie";
-import { useEffect } from "react";
 
 const NavbarDropdown = () => {
   const router = useRouter();
@@ -25,17 +25,19 @@ const NavbarDropdown = () => {
   const user = useAppSelector(useCurrnetUser);
 
   useEffect(() => {
-    if (protectedRoutes.some((route) => pathname.match(route))) {
+    // Redirect to home if protected route and user is not authenticated
+    if (protectedRoutes.some((route) => pathname.match(route)) && !user) {
       router.push("/");
     }
-  }, [pathname, router]);
+  }, [pathname, router, user]); // Add user as a dependency
 
   const handleNavigation = (pathname: string) => {
+    console.log("Navigating to:", pathname); // Log navigation
     router.push(pathname);
-    console.log(pathname);
   };
 
   const handleLogout = () => {
+    router.push("/login");
     dispatch(logoutUser());
     Cookies.remove("token");
   };
@@ -48,7 +50,7 @@ const NavbarDropdown = () => {
           as="button"
           className="transition-transform"
           color="secondary"
-          name="Jason Hughes"
+          name={user?.username || "User"}
           size="sm"
           src={user?.profilePicture}
         />
@@ -60,19 +62,15 @@ const NavbarDropdown = () => {
         </DropdownItem>
         <DropdownItem
           key={user?.role === "user" ? "user-settings" : "admin-settings"}
-          onClick={() =>
-            handleNavigation(
-              user?.role === "user" ? "/user/dashboard" : "/admin/dashboard"
-            )
-          }
+          onClick={() => {
+            const profilePath =
+              user?.role === "user" ? "/user/dashboard" : "/admin/dashboard";
+            handleNavigation(profilePath); // Correctly navigate to the dashboard
+          }}
         >
           My Profile
         </DropdownItem>
-        <DropdownItem
-          key="logout"
-          color="danger"
-          onClick={() => handleLogout()}
-        >
+        <DropdownItem key="logout" color="danger" onClick={handleLogout}>
           Log Out
         </DropdownItem>
       </DropdownMenu>

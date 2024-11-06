@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -65,14 +64,12 @@ export default function Navber() {
           </>
         ) : (
           <>
-            <Button
-              as={Link}
-              className="text-white"
+            <Link
+              className="text-white  hover:text-blue-500 uppercase"
               href="/login"
-              variant="flat"
             >
               Login
-            </Button>
+            </Link>
             {/* <NextLink className="text-green-600" >
               Login
             </NextLink> */}

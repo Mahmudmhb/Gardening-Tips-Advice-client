@@ -8,7 +8,6 @@ import CommentPage from "@/component/Ui/comment/comment";
 import EditAndDeleteApp from "@/component/dropdown/editAndDeleteDropdown";
 import {
   useCreateCommentMutation,
-  useFavoritePostMutation,
   useUpvotePostMutation,
 } from "@/redux/app/featurs/api/post/postApi";
 import { toast } from "sonner";
@@ -20,13 +19,14 @@ import NextLink from "next/link";
 import { useCurrnetUser } from "@/redux/app/featurs/api/auth/authSlice";
 import { useAppSelector } from "@/redux/app/hooks";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import ShareModal from "@/component/Ui/modals/shareModel";
+import PostMenu from "@/component/PostMenu/PostMenu";
 
 const PostSection = ({ item }: { item: TPost }) => {
   const { register, handleSubmit } = useForm<TCommnets>();
   const [createComment] = useCreateCommentMutation();
   const loginUser = useAppSelector(useCurrnetUser);
   const [upvoteUpdate] = useUpvotePostMutation();
-  const [FavoritePost] = useFavoritePostMutation();
 
   const [visibleComments, setVisibleComments] = useState(2);
 
@@ -37,15 +37,6 @@ const PostSection = ({ item }: { item: TPost }) => {
   const handleUpvote = async (postId: string) => {
     try {
       const res = await upvoteUpdate({ postId }).unwrap();
-      toast.success(`${res.message}`, { duration: 1000 });
-    } catch (error: any) {
-      toast.error(error.data.message, { duration: 1000 });
-    }
-  };
-
-  const handleFavorite = async (postId: string) => {
-    try {
-      const res = await FavoritePost({ postId }).unwrap();
       toast.success(`${res.message}`, { duration: 1000 });
     } catch (error: any) {
       toast.error(error.data.message, { duration: 1000 });
@@ -96,9 +87,13 @@ const PostSection = ({ item }: { item: TPost }) => {
             </p>
           </div>
         </div>
-        {item.user.email === loginUser?.email && (
-          <EditAndDeleteApp item={item} />
-        )}
+
+        <div className="flex gap-1 items-center">
+          {item.user.email === loginUser?.email && (
+            <EditAndDeleteApp item={item} />
+          )}
+          <PostMenu item={item} />
+        </div>
       </div>
 
       <p className="mb-4">
@@ -132,10 +127,12 @@ const PostSection = ({ item }: { item: TPost }) => {
         </button>
 
         <button
-          onClick={() => handleFavorite(item._id)}
+          // onClick={() => handleFavorite(item._id)}
           className="flex items-center space-x-2 hover:text-blue-500"
         >
-          <span>Favorite</span>
+          <span className="flex gap-2 items-center">
+            <ShareModal post={item} />
+          </span>
         </button>
       </div>
 

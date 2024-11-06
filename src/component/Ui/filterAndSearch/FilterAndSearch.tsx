@@ -78,7 +78,7 @@ const PostFilterAndSearch = () => {
             <>
               <div className=" flex justify-center mx-auto">
                 <Spinner
-                  label="L"
+                  label="Loading"
                   className="text-center"
                   color="primary"
                   labelColor="primary"

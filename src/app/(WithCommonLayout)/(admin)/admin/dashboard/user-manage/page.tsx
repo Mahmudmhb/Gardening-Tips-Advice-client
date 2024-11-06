@@ -36,7 +36,7 @@ const UserActivity = () => {
         aria-label="User Management Table"
         selectionMode="single"
         defaultSelectedKeys={["2"]}
-        className=" text-[#e5e5e5] bg-[#18191a]  min-h-screen rounded-lg shadow-md"
+        className=" text-[#e5e5e5] bg-default-500/20  min-h-screen rounded-lg shadow-md"
       >
         <TableHeader className="bg-[#18191a]">
           <TableColumn className="text-gray-400">NAME</TableColumn>

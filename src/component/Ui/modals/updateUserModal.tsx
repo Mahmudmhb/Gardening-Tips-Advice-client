@@ -55,9 +55,9 @@ export default function UpdateModal() {
 
   return (
     <>
-      <Button onPress={onOpen}>
+      <button onClick={onOpen}>
         <FaEdit />
-      </Button>
+      </button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent className="text-[#000810]">
           {(onClose) => (

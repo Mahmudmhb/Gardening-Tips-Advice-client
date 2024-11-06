@@ -15,7 +15,7 @@ export default function PostUpdateModal({ item }: { item: TPost }) {
 
   return (
     <>
-      <div onClick={onOpen} className="uppercase w-full p-0">
+      <div onClick={onOpen} className=" w-full p-0">
         <FaEdit />
       </div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">

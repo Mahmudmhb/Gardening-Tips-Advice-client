@@ -26,34 +26,36 @@ const ProfileLayout = () => {
   };
   return (
     <div className=" mx-auto p-4">
-      <div className="md:flex items-center space-x-4 p-4 border-b border-gray-300">
-        <div className=" relative">
-          <Image
-            src={user?.profilePicture as string}
-            alt="Profile Picture"
-            className="rounded-full w-32 h-32 "
-            width={100}
-            height={100}
-          />
-          {user?.verified === true && (
-            <span className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold rounded-full px-2 py-1">
-              Verified
-            </span>
-          )}
-        </div>
-        <div>
-          <h1 className="text-3xl flex gap-3 items-center font-bold uppercase">
-            {user?.username}{" "}
+      <div className="md:flex items-center justify-between  space-x-4 p-4 border-b border-gray-300">
+        <div className="md:flex items-center gap-3">
+          <div className=" relative">
+            <Image
+              src={user?.profilePicture as string}
+              alt="Profile Picture"
+              className="rounded w-32 h-32 "
+              width={100}
+              height={100}
+            />
             {user?.verified === true && (
-              <div>
-                <MdVerified className="text-[#31a24c] text-xl" />
-              </div>
+              <span className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold rounded-full px-2 py-1">
+                Verified
+              </span>
             )}
-          </h1>
-          <h1>
-            {user?.followers?.length} followers • {user?.following?.length}{" "}
-            following
-          </h1>
+          </div>
+          <div>
+            <h1 className="text-3xl flex gap-3 items-center font-bold uppercase">
+              {user?.username}{" "}
+              {user?.verified === true && (
+                <div>
+                  <MdVerified className="text-[#31a24c] text-xl" />
+                </div>
+              )}
+            </h1>
+            <h1>
+              {user?.followers?.length} followers • {user?.following?.length}{" "}
+              following
+            </h1>
+          </div>
         </div>
         <div className="flex justify-between gap-4">
           <div>
@@ -64,6 +66,9 @@ const ProfileLayout = () => {
             )}
           </div>
         </div>
+        <div>
+          <UpdateModal />
+        </div>
       </div>
 
       <div className="flex  flex-wrap justify-between  items-center">
@@ -71,6 +76,7 @@ const ProfileLayout = () => {
           className="md:flex  space-x-8 my-4
           pb-2 "
         >
+          {user?.role !== undefined && user?.role === "user" && <></>}
           <SidebarOptions
             links={
               user?.role !== undefined && user?.role === "user"
@@ -78,9 +84,6 @@ const ProfileLayout = () => {
                 : adminLinks
             }
           />
-        </div>
-        <div>
-          <UpdateModal />
         </div>
       </div>
     </div>
