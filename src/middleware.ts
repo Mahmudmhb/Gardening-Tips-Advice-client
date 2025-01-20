@@ -16,12 +16,15 @@ export default async function middleware(request: NextRequest) {
 
   const userToken = await getCurrentUser();
   const user = userToken?.user;
+  console.log("token", userToken);
 
   if (!user) {
     // User is not authenticated
     if (AuthRoutes.includes(pathname)) {
+      console.log(user, "check if dont have user");
       return NextResponse.next();
     } else {
+      console.log(user, "if have user");
       console.log(`Redirecting to login from ${pathname} due to no user.`);
       return NextResponse.redirect(new URL("/login", request.url));
     }

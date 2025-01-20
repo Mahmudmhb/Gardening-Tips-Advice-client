@@ -8,6 +8,7 @@ interface DecodedToken {
 }
 export const getCurrentUser = async () => {
   const token = cookies().get("token")?.value;
+  console.log("token check", token);
 
   let decodedToken = null;
 

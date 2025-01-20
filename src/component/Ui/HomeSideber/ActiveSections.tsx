@@ -14,7 +14,7 @@ const ActiveSections = () => {
   }
 
   return (
-    <div className="sticky top-0 z-10  shadow rounded-lg p-4">
+    <div className="sticky top-0 h-screen  shadow overflow-y-hidden rounded-lg p-4">
       <h1 className="text-xl font-bold mb-4">Contacts</h1>
       <ul className="divide-y">
         {users?.map((user: IUser) => (

@@ -10,6 +10,7 @@ const PostPage = () => {
   const { data, isLoading } = useGetMyPostQuery(undefined);
 
   const postData = data?.data;
+  console.log(postData);
   return (
     <div className="md:w-11/12 mx-auto min-h-screen">
       <CreatePost />

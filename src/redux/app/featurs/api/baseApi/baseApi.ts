@@ -11,8 +11,8 @@ import {
 import { toast } from "sonner";
 
 const baseQuery = fetchBaseQuery({
-  // baseUrl: "https://assignment-6-server-steel.vercel.app/api/",
-  baseUrl: "http://localhost:5000/api/",
+  baseUrl: "https://assignment-6-server-steel.vercel.app/api/",
+  // baseUrl: "http://localhost:5000/api/",
 
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
